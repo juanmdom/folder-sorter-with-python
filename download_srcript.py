@@ -7,22 +7,22 @@ import os, shutil
 folder_path = r"C:\Users\juanmdom\Downloads"
 
 # File extensions that will be reorganized in specific folders
-extensions = [".docx", ".txt", ".doc", ".pdf", ".mp4", 
+extensions = [".docx", ".txt", ".doc", ".pdf", ".mp4", ".md"
               ".jpg", ".jpeg", ".gif", ".png", ".rar",
-              ".zip", ".exe", ".torrent"]
+              ".zip", ".exe", ".torrent", ".xlsx", ".7z",
+              ".js", ".html", ".iso", ".py", ".cpp", ".xml"]
 
 # Stores all files of the folder
 files = [os.path.join(folder_path, file) 
           for file in os.listdir(folder_path) 
             if os.path.isfile(os.path.join(folder_path, file))]
 
-# Stores all folders of the folder
-folders = [os.path.join(folder_path, file) 
-            for file in os.listdir(folder_path) 
-                if not os.path.isfile(os.path.join(folder_path, file))]
-
 # Main function
 def main():
+  # I remove all pdf's because personal preference
+  if os.path.isdir((folder_path + "\\" + "pdf")):
+    shutil.rmtree((folder_path + "\\" + "pdf"))
+    
   # Checking every file    
   for file in files:
     # Splits the file name and it's extension
